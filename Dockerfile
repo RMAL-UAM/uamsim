@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-vcstool \
     python3-rospkg \
     python3-rosdistro \
+    ros-foxy-desktop \
     && rm -rf /var/lib/apt/lists/*
 
 # install python packages
@@ -93,6 +94,16 @@ COPY ./ros2_entrypoint.sh /
 
 RUN apt update
 RUN apt install nautilus -y
+
+# install Gazebo
+# RUN gazebo9
+
+# copy src folder
+COPY ./src ${ROS2_WS}/src/
+
+ENV DISPLAY :1
+
+RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
 ENTRYPOINT ["/ros2_entrypoint.sh"]
 CMD ["bash"]

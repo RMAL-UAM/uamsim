@@ -24,3 +24,12 @@ Delete all images except `foxy-uam`
 ```
 docker image prune -a --force --filter "repository!=foxy-uam"
 ```
+
+## Configuring Display
+
+Run the following on your host terminal
+```
+xhost + local:
+```
+
+Check the output of `echo $DISPLAY` and change it in the Dockerfile.

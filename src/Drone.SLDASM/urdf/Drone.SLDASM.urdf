@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Drone.SLDASM">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00166311637966503 0.00229470040284394 4.09272781741391E-05"
+        rpy="0 0 0" />
+      <mass
+        value="6.30842991010407" />
+      <inertia
+        ixx="0.0549370446155752"
+        ixy="-2.27528746777029E-06"
+        ixz="6.72062452380464E-07"
+        iyy="0.0921711878743817"
+        iyz="-4.49305748940149E-07"
+        izz="0.0552674071334869" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Prop1_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 0.0128323140532459 5.68989300120393E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0295951847814123" />
+      <inertia
+        ixx="0.000164359186503822"
+        ixy="2.39693812306986E-19"
+        ixz="-1.07447104605329E-05"
+        iyy="0.000166384377923945"
+        iyz="-1.70058798324791E-18"
+        izz="2.76701246963403E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prop1"
+    type="continuous">
+    <origin
+      xyz="0 0.3048 -0.028957"
+      rpy="-1.5708 0 -0.99636" />
+    <parent
+      link="base_link" />
+    <child
+      link="Prop1_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Prop2_link">
+    <inertial>
+      <origin
+        xyz="0 0.0128323140532914 6.74460487459783E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0295951847850067" />
+      <inertia
+        ixx="0.000164359186504303"
+        ixy="4.84258376314456E-19"
+        ixz="-1.07447104605933E-05"
+        iyy="0.000166384377924309"
+        iyz="-1.23892182043495E-18"
+        izz="2.76701246952207E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prop2"
+    type="continuous">
+    <origin
+      xyz="-0.3048 0 -0.028957"
+      rpy="-1.5708 0 -0.77151" />
+    <parent
+      link="base_link" />
+    <child
+      link="Prop2_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Prop3_link">
+    <inertial>
+      <origin
+        xyz="1.11022302462516E-16 0.0128323140532443 -4.56926163572291E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.0295951847814117" />
+      <inertia
+        ixx="0.000164359186503818"
+        ixy="-4.24513270978536E-18"
+        ixz="-1.07447104605337E-05"
+        iyy="0.000166384377923937"
+        iyz="-5.20099951927419E-17"
+        izz="2.76701246963677E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prop3"
+    type="continuous">
+    <origin
+      xyz="0 -0.3048 -0.028957"
+      rpy="-1.5708 0 1.6037" />
+    <parent
+      link="base_link" />
+    <child
+      link="Prop3_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Prop4_link">
+    <inertial>
+      <origin
+        xyz="1.94289029309402E-16 0.012832314053245 2.77555756156289E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.029595184781413" />
+      <inertia
+        ixx="0.000164359186503821"
+        ixy="9.14572349787417E-19"
+        ixz="-1.07447104605337E-05"
+        iyy="0.000166384377923945"
+        iyz="-2.56372540597711E-18"
+        izz="2.76701246963237E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Prop4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="prop4"
+    type="continuous">
+    <origin
+      xyz="0.3048 0 -0.028957"
+      rpy="-1.5708 0 1.0336" />
+    <parent
+      link="base_link" />
+    <child
+      link="Prop4_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Manip_base_link">
+    <inertial>
+      <origin
+        xyz="-0.0148835833074758 0.0553106952147659 -0.00439958262246139"
+        rpy="0 0 0" />
+      <mass
+        value="0.589826220232128" />
+      <inertia
+        ixx="0.00187518407031447"
+        ixy="0.000235040613216589"
+        ixz="-5.03554400382576E-05"
+        iyy="0.00140261940314784"
+        iyz="0.000210555699440173"
+        izz="0.00146401627722415" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Manip_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Manip_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="manip_base"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.09398"
+      rpy="-1.5708 0 -2.3131" />
+    <parent
+      link="base_link" />
+    <child
+      link="Manip_base_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Inter_link">
+    <inertial>
+      <origin
+        xyz="-7.76642278475792E-06 -0.12010737514249 0.0087239438148208"
+        rpy="0 0 0" />
+      <mass
+        value="0.448594169690817" />
+      <inertia
+        ixx="0.00301348297707412"
+        ixy="-2.14028474157563E-07"
+        ixz="2.95794558044342E-08"
+        iyy="0.000232635680344767"
+        iyz="-2.61207807060706E-08"
+        izz="0.00310390576848532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Inter_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/Inter_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="inter"
+    type="revolute">
+    <origin
+      xyz="0 0.10055 -0.027837"
+      rpy="1.5708 -0.95138 1.5708" />
+    <parent
+      link="Manip_base_link" />
+    <child
+      link="Inter_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="End_link">
+    <inertial>
+      <origin
+        xyz="-7.26838809920194E-05 0.0761929887760256 -0.0383403847772621"
+        rpy="0 0 0" />
+      <mass
+        value="0.45551656730505" />
+      <inertia
+        ixx="0.00203566630254163"
+        ixy="3.3641195178534E-06"
+        ixz="8.9711545531675E-08"
+        iyy="0.000353093049496674"
+        iyz="-2.9633340175993E-05"
+        izz="0.00214759941922202" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/End_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Drone.SLDASM/meshes/End_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="end"
+    type="revolute">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 2.0574" />
+    <parent
+      link="Inter_link" />
+    <child
+      link="End_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

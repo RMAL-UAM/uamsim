@@ -10,7 +10,7 @@
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find Drone.SLDASM)/urdf/Drone.SLDASM.urdf -urdf -model Drone.SLDASM"
+    args="-file $(find uam-model)/urdf/uam-model.urdf -urdf -model uam-model"
     output="screen" />
   <node
     name="fake_joint_calibration"

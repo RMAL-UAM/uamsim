@@ -1,0 +1,28 @@
+<package format="3">
+  <name>uam-model</name>
+  <version>0.0.0</version>
+  <description>
+    <p>URDF Description package for uam-model</p>
+    <p>This package contains configuration data, 3D models and launch files
+for uam-model robot</p>
+  </description>
+  <author>willcmc</author>
+  <maintainer email="w.ebenezer007@gmail.com" />
+  <license>MIT</license>
+  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>rosgraph_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+  <exec_depend>ros2launch</exec_depend>
+</package>

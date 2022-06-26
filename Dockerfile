@@ -96,14 +96,18 @@ RUN apt update
 RUN apt install nautilus -y
 
 # install Gazebo
-# RUN gazebo9
-
-# copy src folder
-COPY ./src ${ROS2_WS}/src/
+RUN apt-get install gazebo9 -y
 
 ENV DISPLAY :1
 
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
+
+# copy src folder
+COPY ./src ${ROS2_WS}/src/
+
+# and build it..
+RUN . ~/.bashrc \
+    colcon build
 
 ENTRYPOINT ["/ros2_entrypoint.sh"]
 CMD ["bash"]

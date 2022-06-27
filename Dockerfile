@@ -33,6 +33,7 @@ ENV LC_ALL C.UTF-8
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     git \
+    vim \
     python3-colcon-common-extensions \
     python3-colcon-mixin \
     python3-rosdep \
@@ -40,6 +41,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-rospkg \
     python3-rosdistro \
     ros-foxy-desktop \
+    ros-foxy-gazebo-* \
     && rm -rf /var/lib/apt/lists/*
 
 # install python packages
@@ -94,18 +96,20 @@ COPY ./ros2_entrypoint.sh /
 
 RUN apt update
 RUN apt install nautilus -y
+RUN apt install aptitude -y
 
 # install Gazebo
-RUN apt-get install gazebo9 -y
+# RUN apt-get install gazebo9 -y
 
 ENV DISPLAY :1
-
-RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
 # copy src folder
 COPY ./src ${ROS2_WS}/src/
 
-# and build it..
+# for ROS2 environment setup
+RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
+
+# source it and build it..
 RUN . ~/.bashrc \
     colcon build
 

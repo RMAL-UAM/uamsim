@@ -4,13 +4,14 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp/time.hpp"
 
-#include "rosgraph_msgs/msg/clock.hpp"
-#include "geometry_msgs/msg/pose.hpp"
-#include "geometry_msgs/msg/pose_stamped.hpp"
-#include "geometry_msgs/msg/twist.hpp"
+#include <rosgraph_msgs/msg/clock.hpp>
+#include <geometry_msgs/msg/pose.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <geometry_msgs/msg/twist.hpp>
+#include <tf2/LinearMath/Quaternion.h>
 
 /*
-Important warning [DO NOT REMOVE UNTIL NO LONGER APPstateLICABLE]
+Important warning [DO NOT REMOVE UNTIL NO LONGER APPLICABLE]
   For topic /uam/pose
     Twist messages are being used to publish pose data due to Isaac Sim's constraints.
       rot_euler - published as angular speed
@@ -28,7 +29,7 @@ class SimNode : public rclcpp::Node{
       RCLCPP_INFO(get_logger(), "Initializing node.\n");
 
       clk_publisher_ = this->create_publisher<rosgraph_msgs::msg::Clock>("clock", 10);
-      pose_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("uam/pose", 10);
+      pose_publisher_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("uam/pose", 10);
       twst_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("uam/twist", 10);
 
       this->get_parameter_or("sim_end_time", this->t_final_secs, rclcpp::Parameter("sim_end_time", 1000));
@@ -41,7 +42,7 @@ class SimNode : public rclcpp::Node{
       clk_publisher_->publish(time);
     }
 
-    void publish_state(geometry_msgs::msg::Twist& pose, geometry_msgs::msg::Twist& twist){
+    void publish_state(geometry_msgs::msg::PoseStamped& pose, geometry_msgs::msg::Twist& twist){
       pose_publisher_->publish(pose);
       twst_publisher_->publish(twist);
     }
@@ -51,7 +52,7 @@ class SimNode : public rclcpp::Node{
 
   private:
     rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clk_publisher_;
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pose_publisher_;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr pose_publisher_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twst_publisher_;
 };
 
@@ -73,8 +74,9 @@ int main(int argc, char ** argv)
 
 
   rosgraph_msgs::msg::Clock t_msg;
-  geometry_msgs::msg::Twist pose_msg;
+  geometry_msgs::msg::PoseStamped pose_msg;
   geometry_msgs::msg::Twist twist_msg;
+  tf2::Quaternion orientation;
 
   Euler uam_euler;
   geometry_msgs::msg::Point uam_pt;
@@ -98,17 +100,16 @@ int main(int argc, char ** argv)
             uam_pt.y = 0;
             uam_pt.z += 1;
 
-            uam_euler.pitch = 0;
-            uam_euler.roll = 0;
-            uam_euler.yaw = 0;
+            orientation.setEuler(0, 0, 0);
 
-            pose_msg.angular.x = uam_euler.yaw;
-            pose_msg.angular.y = uam_euler.pitch;
-            pose_msg.angular.z = uam_euler.roll;
+            pose_msg.pose.orientation.w = orientation.getW();
+            pose_msg.pose.orientation.x = orientation.getX();
+            pose_msg.pose.orientation.y = orientation.getY();
+            pose_msg.pose.orientation.z = orientation.getZ();
 
-            pose_msg.linear.x = uam_pt.x;
-            pose_msg.linear.y = uam_pt.y;
-            pose_msg.linear.z = uam_pt.z;
+            pose_msg.pose.position.x = uam_pt.x;
+            pose_msg.pose.position.y = uam_pt.y;
+            pose_msg.pose.position.z = uam_pt.z;
 
             node->publish_state(pose_msg, twist_msg);
             dx.push_back(dx_compute(x[int(t_step*t_cur)], u));

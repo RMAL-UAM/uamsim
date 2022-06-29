@@ -12,10 +12,10 @@ def generate_launch_description():
  
   # Constants for paths to different files and folders
   gazebo_models_path = 'models'
-  package_name = 'uam-model'
-  robot_name_in_model = 'uam-model'
+  package_name = 'uamv0_description'
+  robot_name_in_model = 'uamv0_description'
   rviz_config_file_path = 'rviz/config.rviz'
-  urdf_file_path = 'urdf/uam-model.urdf'
+  urdf_file_path = 'urdf/uamv0.urdf'
   world_file_path = 'worlds/neighborhood.world'
      
   # Pose where we want to spawn the robot

@@ -1,10 +1,8 @@
 <package format="3">
-  <name>uam-model</name>
+  <name>simulator</name>
   <version>0.0.0</version>
   <description>
-    <p>URDF Description package for uam-model</p>
-    <p>This package contains configuration data, 3D models and launch files
-for uam-model robot</p>
+    Just the simulator.
   </description>
   <author>willcmc</author>
   <maintainer email="w.ebenezer007@gmail.com" />
@@ -15,7 +13,7 @@ for uam-model robot</p>
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
-  <depend>rosgraph_msgs</depend>
+  <depend>gazebo_ros_pkgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

@@ -1,4 +1,5 @@
 #include <cstdio>
+#include<vector>
 #include "dynamics.hpp"
 
 #include "rclcpp/rclcpp.hpp"
@@ -78,10 +79,8 @@ int main(int argc, char ** argv)
   geometry_msgs::msg::Twist twist_msg;
   tf2::Quaternion orientation;
 
-  Euler uam_euler;
   geometry_msgs::msg::Point uam_pt;
-
-  uam_euler.pitch = 45;
+  
   uam_pt.z = 0;
 
   std::vector<state> x;
@@ -125,7 +124,7 @@ int main(int argc, char ** argv)
 }
 
 state dx_compute(state x, control u){
-  ;
+  return x;
 }
 
 void rk4(std::vector<state> x_list, std::vector<state> dx_list, control u_cur, double Ts, double t){

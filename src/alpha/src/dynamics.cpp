@@ -10,12 +10,13 @@
 #include "geometry_msgs/msg/twist.hpp"
 
 /*
-Important warning [DO NOT REMOVE UNTIL NO LONGER APPLICABLE]
+Important warning [DO NOT REMOVE UNTIL NO LONGER APPstateLICABLE]
   For topic /uam/pose
     Twist messages are being used to publish pose data due to Isaac Sim's constraints.
       rot_euler - published as angular speed
       tf_3d - published as linear speed
 */
+
 
 class SimNode : public rclcpp::Node{
   public:
@@ -34,6 +35,7 @@ class SimNode : public rclcpp::Node{
       this->get_parameter_or("sim_step_size", this->t_step_secs, rclcpp::Parameter("sim_step_size", 0.1));
       this->set_parameter(rclcpp::Parameter("use_sim_time", true));
     }
+
 
     void publish_time(rosgraph_msgs::msg::Clock& time){
       clk_publisher_->publish(time);
@@ -80,6 +82,11 @@ int main(int argc, char ** argv)
   uam_euler.pitch = 45;
   uam_pt.z = 0;
 
+  std::vector<state> x;
+  std::vector<state> dx;
+  double temp[4] = {0, 0, 0, 0};
+  control u(temp);
+
   while (rclcpp::ok() && t_cur < t_final) {
             RCLCPP_INFO(rclcpp::get_logger("Tick"), "%f\n", t_cur);
             
@@ -104,7 +111,9 @@ int main(int argc, char ** argv)
             pose_msg.linear.z = uam_pt.z;
 
             node->publish_state(pose_msg, twist_msg);
-            
+            dx.push_back(dx_compute(x[int(t_step*t_cur)], u));
+            rk4(x, dx, u, t_step, t_cur);
+
             rclcpp::spin_some(node);
             loop_rate.sleep();
             t_cur += t_step;
@@ -112,4 +121,18 @@ int main(int argc, char ** argv)
 
   rclcpp::shutdown();
   return 0;
+}
+
+state dx_compute(state x, control u){
+  ;
+}
+
+void rk4(std::vector<state> x_list, std::vector<state> dx_list, control u_cur, double Ts, double t){
+  std::vector<state> k;
+  k.push_back(dx_compute(x_list[int(t*Ts)], u_cur)*Ts);
+  k.push_back(dx_compute(x_list[int(t*Ts)] + k[0]*0.5, u_cur)*Ts);
+  k.push_back(dx_compute(x_list[int(t*Ts)] + k[1]*0.5, u_cur)*Ts);
+  k.push_back(dx_compute(x_list[int(t*Ts)] + k[2], u_cur)*Ts);
+  
+  x_list.push_back(x_list[int(t*Ts)] + (k[0] + k[1]*2 + k[2]*2 + k[3])*(1/6.0));
 }

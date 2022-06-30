@@ -92,7 +92,7 @@ RUN colcon \
 RUN cp /etc/skel/.bashrc ~/
 
 # setup entrypoint
-COPY ./ros2_entrypoint.sh /
+COPY ./entrypoint.sh /
 
 RUN apt update
 RUN apt install nautilus -y
@@ -103,6 +103,13 @@ RUN apt install aptitude -y
 
 ENV DISPLAY :1
 
+# Install Cpp libraries
+ADD lib /libs
+WORKDIR /libs
+RUN cmake ./eigen-3.4.0 && make install
+
+WORKDIR ${ROS2_WS}
+
 # copy src folder
 COPY ./src ${ROS2_WS}/src/
 
@@ -110,8 +117,7 @@ COPY ./src ${ROS2_WS}/src/
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
 # source it and build it..
-RUN . ~/.bashrc \
-    colcon build
+RUN . ~/.bashrc
 
-ENTRYPOINT ["/ros2_entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

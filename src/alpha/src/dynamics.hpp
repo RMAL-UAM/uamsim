@@ -6,49 +6,54 @@ eg. x1 = [x, y, z] (n = 3)
 x1, x2, x3, x4 are vectors forming state vector
 */
 
-class state
-{
+class state{
 private:
-  /* data */
+  ;
 public:
   state(double[n]);
-  double state_data[n];
+  double data[n];
   ~state();
 };
 
-state::state(double data[n])
-{
+state::state(double data[n]){
+  for (int i = 0; i < n; i++)
+    this->data[i] = data[i];
 }
 
-state::~state()
-{
+state::~state(){
 }
 
 state operator* (const state& x, double y){
   double data[n];
+  for (int i = 0; i < n; i++)
+    data[i] = y*x.data[i];
+  
   return state(data);
 } 
 
 state operator+ (const state& x, const state& y){
   double data[n];
+  for (int i = 0; i < n; i++)
+    data[i] = x.data[i] + y.data[i];
+
   return state(data);
 } 
 
-class control
-{
+class control{
 private:
   /* data */
 public:
   control(double[m]);
+  double data[n];
   ~control();
 };
 
-control::control(double data[m])
-{
+control::control(double data[m]){
+  for (int i = 0; i < m; i++)
+    this->data[i] = data[i];
 }
 
-control::~control()
-{
+control::~control(){
 }
 
 state dx_compute(state x, control u);

@@ -123,8 +123,29 @@ int main(int argc, char ** argv)
   return 0;
 }
 
+/*
+x1 x
+x2 y
+x3 z
+x4 \dot x
+x5 \dot y
+x6 \dot z
+x7 \theta
+x8 \phi
+x9 \psi
+x10 \dot \theta
+x11 \dot \phi
+x12 \dot \psi
+*/
+
 state dx_compute(state x, control u){
-  return x;
+  double data[n];
+  for(int i = 0; i < 3; i++){
+    // dx 1, 2, 3
+    data[i] = x.data[i+3];
+    
+  } 
+  return state(data);
 }
 
 void rk4(std::vector<state> x_list, std::vector<state> dx_list, control u_cur, double Ts, double t){

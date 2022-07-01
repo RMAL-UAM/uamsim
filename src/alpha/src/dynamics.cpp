@@ -1,15 +1,4 @@
-#include <cstdio>
-#include<vector>
 #include "dynamics.hpp"
-
-#include "rclcpp/rclcpp.hpp"
-#include "rclcpp/time.hpp"
-
-#include <rosgraph_msgs/msg/clock.hpp>
-#include <geometry_msgs/msg/pose.hpp>
-#include <geometry_msgs/msg/pose_stamped.hpp>
-#include <geometry_msgs/msg/twist.hpp>
-#include <tf2/LinearMath/Quaternion.h>
 
 /*
 Important warning [DO NOT REMOVE UNTIL NO LONGER APPLICABLE]

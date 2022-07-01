@@ -1,0 +1,9 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+docker-compose is already the newest version (1.25.0-1).
+The following packages were automatically installed and are no longer required:
+  libfwupdplugin1 linux-image-5.11.0-27-generic
+  linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.

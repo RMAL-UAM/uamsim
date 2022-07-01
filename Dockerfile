@@ -1,6 +1,6 @@
 # This is an auto generated Dockerfile for ros2:devel
 # generated from docker_images_ros2/devel/create_ros_image.Dockerfile.em
-ARG FROM_IMAGE=ubuntu:focal
+ARG FROM_IMAGE=nvidia/opengl:base-ubuntu20.04
 FROM $FROM_IMAGE
 
 # setup timezone

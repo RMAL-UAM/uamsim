@@ -1,7 +1,7 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/willcmc/UAM-official'
-docker image build --network host -t foxy-uam:v0 .
-docker run --rm --gpus all -it foxy-uam:v0
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/rmal3/uamsim'
+docker image build -t foxy-uam:v0 .
+docker run --rm --gpus all --network host --env DISPLAY=:1 -v /tmp/.X11-unix:/tmp/.X11-unix -it foxy-uam:v0
 echo "Building and Running"
-make: Leaving directory '/home/willcmc/UAM-official'
+make: Leaving directory '/home/rmal3/uamsim'
  

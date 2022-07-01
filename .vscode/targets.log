@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  1 15:47:28 2022
+# Make data base, printed on Fri Jul  1 17:02:31 2022
 
 # Variables
 
@@ -263,7 +263,7 @@ all: build run
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 15:47:12.503500899
+#  Last modified 2022-07-01 16:06:41.777557693
 #  File has been updated.
 #  Successfully updated.
 
@@ -279,7 +279,6 @@ build:
 # % := 
 # automatic
 # * := 
- 
 # automatic
 # + := 
 # automatic
@@ -293,7 +292,8 @@ build:
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/12=8%
 #  recipe to execute (from 'Makefile', line 7):
-	docker image build --network host -t ${IMAGE_NAME} .
+	docker image build -t ${IMAGE_NAME} .
+ 
 
 # Not a target:
 .DEFAULT:
@@ -306,7 +306,7 @@ run:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 10):
-	docker run --rm --gpus all -it ${IMAGE_NAME}
+	docker run --rm --gpus all --network host --env DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix -it ${IMAGE_NAME}
 
 # files hash-table stats:
 # Load=6/1024=1%, Rehash=0, Collisions=0/22=0%
@@ -322,6 +322,6 @@ run:
 # strcache performance: lookups = 33 / hit rate = 33%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/33=3%
-# Finished Make data base on Fri Jul  1 15:47:28 2022
+# Finished Make data base on Fri Jul  1 17:02:31 2022
 
  

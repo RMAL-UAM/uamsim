@@ -104,9 +104,9 @@ RUN apt install aptitude -y
 ENV DISPLAY :1
 
 # Install Cpp libraries
-ADD lib /libs
+COPY lib/ /libs
 WORKDIR /libs
-RUN cmake ./eigen-3.4.0 && make install
+RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
 
 WORKDIR ${ROS2_WS}
 

@@ -26,19 +26,19 @@ find_package(rosgraph_msgs REQUIRED)
 #   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 #   $<INSTALL_INTERFACE:include>)
 
+install(DIRECTORY config
+  DESTINATION share/${PROJECT_NAME})
+
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY world
-  DESTINATION share/${PROJECT_NAME})
-
-install(DIRECTORY config
+install(DIRECTORY meshes
   DESTINATION share/${PROJECT_NAME})
 
 install(DIRECTORY urdf
   DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY meshes
+install(DIRECTORY worlds
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

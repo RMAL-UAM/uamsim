@@ -117,7 +117,10 @@ COPY ./src ${ROS2_WS}/src/
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
 # source it and build it..
-RUN . ~/.bashrc
+RUN . ~/.bashrc 
+
+COPY ./anything.sh /
+RUN chmod +x /anything.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

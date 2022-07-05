@@ -21,7 +21,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(gazebo_ros_pkgs REQUIRED)
-find_package(uamv0_description REQUIRED)
+find_package(uamv0 REQUIRED)
 
 # target_include_directories(PUBLIC
 #   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

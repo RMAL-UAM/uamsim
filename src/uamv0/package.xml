@@ -1,10 +1,10 @@
 <package format="3">
-  <name>uamv0_description</name>
+  <name>uamv0</name>
   <version>0.0.0</version>
   <description>
-    <p>URDF Description package for uamv0_description</p>
+    <p>URDF Description package for uamv0</p>
     <p>This package contains configuration data, 3D models and launch files
-for uamv0_description robot</p>
+for uamv0 robot</p>
   </description>
   <author>willcmc</author>
   <maintainer email="w.ebenezer007@gmail.com" />

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(uamv0_description)
+project(uamv0)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -29,16 +29,19 @@ find_package(rosgraph_msgs REQUIRED)
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME})
+# install(DIRECTORY meshes
+#   DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY meshes
-  DESTINATION share/${PROJECT_NAME})
+# install(DIRECTORY urdf
+#   DESTINATION share/${PROJECT_NAME})
 
-install(DIRECTORY urdf
-  DESTINATION share/${PROJECT_NAME})
+# install(DIRECTORY launch
+#   DESTINATION share/${PROJECT_NAME})
 
 install(DIRECTORY worlds
+  DESTINATION share/${PROJECT_NAME})
+
+install(DIRECTORY models
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()

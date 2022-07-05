@@ -111,7 +111,7 @@ RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
 WORKDIR ${ROS2_WS}
 
 # copy src folder
-COPY ./src ${ROS2_WS}/src/
+# ADD ./src ${ROS2_WS}/
 
 # for ROS2 environment setup
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc

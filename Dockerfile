@@ -95,8 +95,7 @@ RUN cp /etc/skel/.bashrc ~/
 COPY ./entrypoint.sh /
 
 RUN apt update
-RUN apt install nautilus -y
-RUN apt install aptitude -y
+RUN apt install nautilus wget aptitude -y
 
 # install Gazebo
 # RUN apt-get install gazebo9 -y
@@ -111,16 +110,24 @@ RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
 WORKDIR ${ROS2_WS}
 
 # copy src folder
-# ADD ./src ${ROS2_WS}/
+ADD ./src ${ROS2_WS}/
 
+RUN cd ${ROS2_WS}/src/ \
+    && wget https://github.com/osrf/gazebo/archive/refs/tags/gazebo11_11.10.1.tar.gz \
+    && tar -xvzf gazebo11_11.10.1.tar.gz \
+    && rm gazebo11_11.10.1.tar.gz
 # for ROS2 environment setup
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
 # source it and build it..
-RUN . ~/.bashrc 
+RUN . ~/.bashrc
 
 COPY ./anything.sh /
 RUN chmod +x /anything.sh
+
+RUN cd ${ROS2_WS} \
+  && . /opt/ros/foxy/setup.sh \
+  && colcon build
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

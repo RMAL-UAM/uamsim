@@ -112,10 +112,6 @@ WORKDIR ${ROS2_WS}
 # copy src folder
 ADD ./src ${ROS2_WS}/
 
-RUN cd ${ROS2_WS}/src/ \
-    && wget https://github.com/osrf/gazebo/archive/refs/tags/gazebo11_11.10.1.tar.gz \
-    && tar -xvzf gazebo11_11.10.1.tar.gz \
-    && rm gazebo11_11.10.1.tar.gz
 # for ROS2 environment setup
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
@@ -127,7 +123,7 @@ RUN chmod +x /anything.sh
 
 RUN cd ${ROS2_WS} \
   && . /opt/ros/foxy/setup.sh \
-  && colcon build
+  && MAKEFLAGS="-j2 -l2" colcon build --symlink-install --executor sequential
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

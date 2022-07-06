@@ -95,7 +95,7 @@ RUN cp /etc/skel/.bashrc ~/
 COPY ./entrypoint.sh /
 
 RUN apt update
-RUN apt install nautilus wget aptitude -y
+RUN apt install nautilus wget aptitude libgazebo11-dev -y
 
 # install Gazebo
 # RUN apt-get install gazebo9 -y
@@ -123,7 +123,7 @@ RUN chmod +x /anything.sh
 
 RUN cd ${ROS2_WS} \
   && . /opt/ros/foxy/setup.sh \
-  && MAKEFLAGS="-j2 -l2" colcon build --symlink-install --executor sequential
+  && colcon build
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

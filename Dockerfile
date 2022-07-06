@@ -97,6 +97,8 @@ COPY ./entrypoint.sh /
 RUN apt update
 RUN apt install nautilus wget aptitude libgazebo11-dev -y
 
+RUN apt install libdart-all-dev -y
+
 # install Gazebo
 # RUN apt-get install gazebo9 -y
 
@@ -110,7 +112,7 @@ RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
 WORKDIR ${ROS2_WS}
 
 # copy src folder
-ADD ./src ${ROS2_WS}/
+# ADD ./src ${ROS2_WS}/src
 
 # for ROS2 environment setup
 RUN echo ". /opt/ros/foxy/setup.bash" >> ~/.bashrc
@@ -124,6 +126,8 @@ RUN chmod +x /anything.sh
 RUN cd ${ROS2_WS} \
   && . /opt/ros/foxy/setup.sh \
   && colcon build
+
+ENV GAZEBO_PLUGIN_PATH ${ROS2_WS}/build/simulator 
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

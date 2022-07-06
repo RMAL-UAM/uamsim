@@ -935,5 +935,6 @@
       </plugin>
     </sensor>
     </link>
+    <plugin name="ros_kinematic" filename="libros_kinematic.so"/>
   </model>
 </sdf>

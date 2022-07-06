@@ -30,6 +30,9 @@ find_package(uamv0 REQUIRED)
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
+install(DIRECTORY scripts
+  DESTINATION share/${PROJECT_NAME})
+
 # install(DIRECTORY config
 #   DESTINATION share/${PROJECT_NAME})
 

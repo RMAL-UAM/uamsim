@@ -1,50 +1,58 @@
-#include <gazebo/common/Plugin.hh>
-#include <gazebo/physics/physics.hh>
+#include <functional>
 #include <gazebo/gazebo.hh>
+#include <gazebo/physics/physics.hh>
+#include <gazebo/common/common.hh>
 #include <ignition/math/Vector3.hh>
-#include <ignition/math/Pose3.hh>
-#include <ignition/math/Quaternion.hh>
+#include <gazebo/physics/PhysicsTypes.hh>
+
+float g = 0.0;
 
 namespace gazebo
 {
-    class KinematicPlugin : public ModelPlugin
+    class ModelPush : public ModelPlugin
     {
-    private:
-        physics::ModelPtr model;
-        physics::LinkPtr base_link;
-
-        sdf::ElementPtr temp;
-        event::ConnectionPtr updateConnection;
-
     public:
-        KinematicPlugin() : ModelPlugin()
-        {
-            printf("Hello World!\n");
-        }
-
-        void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
+        void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
         {
             // Store the pointer to the model
             this->model = _parent;
-            this->world = this->model->GetWorld();
-            this->mbox = this->world->GetModel("uamv0");
-            // this->jointR1_ = this->model->GetJoint("r1");
-            this->link1 = this->mbox->GetLink("base_link");
 
             // Listen to the update event. This event is broadcast every
             // simulation iteration.
             this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-                std::bind(&KinematicPlugin::OnUpdate, this));
+                std::bind(&ModelPush::OnUpdate, this));
         }
 
+        // Called by the world update start event
+    public:
         void OnUpdate()
         {
+            g++;
             // Apply a small linear velocity to the model.
-            this->temp->GetElement("pose")->Set(ignition::math::Pose3(ignition::math::Vector3(0, 0, 10), ignition::math::Quaternion(0, 0, 0)));
-            this->base_link->UpdateParameters(this->temp);
-            // this->model->Set
+            // this->model->SetLinearVel(ignition::math::Vector3d(.3, 0, 0));
+            this->model->GetJoint("prop1")->SetVelocity(0, 10);
+            this->model->GetJoint("prop2")->SetVelocity(0, 10);
+            this->model->GetJoint("prop3")->SetVelocity(0, 10);
+            this->model->GetJoint("prop4")->SetVelocity(0, 10);
+            this->model->GetJoint("inter")->SetVelocity(0, 0);
+
+
+            this->model->GetJoint("manip_base")->SetVelocity(0, 0);
+            this->model->GetJoint("end")->SetVelocity(0, 0);
+            this->model->GetLink("base_link")->SetLinearVel({0, 0, 0.1});
+            this->model->GetLink("base_link")->SetAngularVel({0, 0, 0});
+            //this->model->GetLink("base_link")->SetVelocity(0, 1.0);
         }
+
+        // Pointer to the model
+    private:
+        physics::ModelPtr model;
+
+        // Pointer to the update event connection
+    private:
+        event::ConnectionPtr updateConnection;
     };
 
-    GZ_REGISTER_MODEL_PLUGIN(KinematicPlugin)
+    // Register this plugin with the simulator
+    GZ_REGISTER_MODEL_PLUGIN(ModelPush)
 }

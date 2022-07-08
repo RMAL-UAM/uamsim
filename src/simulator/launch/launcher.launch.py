@@ -15,7 +15,7 @@ def generate_launch_description():
   package_name = 'uamv0'
   robot_name_in_model = 'uamv0'
   sdf_model_path = 'models/uamv0_description/model.sdf'
-  world_file_path = 'worlds/simple.world'
+  world_file_path = 'worlds/warehouse.world'
      
   # Pose where we want to spawn the robot
   spawn_x_val = '0.0'

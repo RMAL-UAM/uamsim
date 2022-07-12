@@ -13,6 +13,7 @@
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>rosgraph_msgs</depend>
   <depend>uamv0</depend>
   <depend>gazebo_ros_pkgs</depend>
 

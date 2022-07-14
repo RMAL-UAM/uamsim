@@ -126,6 +126,7 @@ RUN chmod +x /anything.sh
 RUN cd ${ROS2_WS} \
   && . /opt/ros/foxy/setup.sh \
   && colcon build
+  
 
 ENV GAZEBO_PLUGIN_PATH ${ROS2_WS}/build/simulator 
 

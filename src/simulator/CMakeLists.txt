@@ -29,6 +29,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(gazebo_ros_pkgs REQUIRED)
 find_package(uamv0 REQUIRED)
 
+
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 
@@ -42,7 +43,7 @@ install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
 
 add_library(ros_kinematic SHARED scripts/ros_kinematic.cpp)
-ament_target_dependencies(ros_kinematic rclcpp std_msgs geometry_msgs rosgraph_msgs)
+ament_target_dependencies(ros_kinematic rclcpp std_msgs geometry_msgs rosgraph_msgs )
 target_link_libraries(ros_kinematic ${GAZEBO_LIBRARIES})
 
 # install(DIRECTORY config

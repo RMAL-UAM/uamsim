@@ -89,11 +89,6 @@ namespace gazebo
         /// Connection to event called at every world iteration.
         gazebo::event::ConnectionPtr update_connection_;
 
-
-
-
-        
-
         void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
         {
 

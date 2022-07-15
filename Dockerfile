@@ -95,19 +95,26 @@ RUN cp /etc/skel/.bashrc ~/
 COPY ./entrypoint.sh /
 
 RUN apt update
-RUN apt install nautilus wget aptitude libgazebo11-dev -y
-
+RUN apt install nautilus wget aptitude libgazebo11-dev  -y
+#RUN RTI_NC_LICENSE_ACCEPTED=yes apt install -q -y rti-connext-dds-5.3.1 -y
 RUN apt install libdart-all-dev -y
 
 # install Gazebo
 # RUN apt-get install gazebo9 -y
 
+# Create USER with USER ID matching host system to access ROS from host system
+
+#RUN cd /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts && source ./rtisetenv_x64Linux3gcc5.4.0.bash; cd -
+#RUN adduser -u 1000 --disabled-password --gecos '' ubuntu_user
+#RUN usermod -aG sudo ubuntu_user
+#USER ubuntu_user
+
 ENV DISPLAY :1
 
 # Install Cpp libraries
-COPY lib/ /libs
-WORKDIR /libs
-RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
+#COPY lib/ /libs
+#WORKDIR /libs
+#RUN tar -xvzf ./*.tar.gz && cmake ./eigen-3.4.0 && make install
 
 WORKDIR ${ROS2_WS}
 
@@ -126,7 +133,7 @@ RUN chmod +x /anything.sh
 RUN cd ${ROS2_WS} \
   && . /opt/ros/foxy/setup.sh \
   && colcon build
-  
+
 
 ENV GAZEBO_PLUGIN_PATH ${ROS2_WS}/build/simulator 
 

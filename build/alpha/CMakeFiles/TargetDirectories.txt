@@ -1,0 +1,10 @@
+/home/rmal4/uamsim/build/alpha/CMakeFiles/install/strip.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/install.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/list_install_components.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/rebuild_cache.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/edit_cache.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/test.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/dynamics.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/install/local.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/alpha_uninstall.dir
+/home/rmal4/uamsim/build/alpha/CMakeFiles/uninstall.dir

@@ -1,0 +1,9 @@
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/install/strip.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/install/local.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/install.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/list_install_components.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/rebuild_cache.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/edit_cache.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/test.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/uamv0_uninstall.dir
+/home/rmal4/uamsim/build/uamv0/CMakeFiles/uninstall.dir

@@ -1,0 +1,10 @@
+/home/rmal4/uamsim/build/simulator/CMakeFiles/install/strip.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/install.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/list_install_components.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/rebuild_cache.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/edit_cache.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/test.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/install/local.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/simulator_uninstall.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/ros_kinematic.dir
+/home/rmal4/uamsim/build/simulator/CMakeFiles/uninstall.dir

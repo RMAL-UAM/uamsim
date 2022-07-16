@@ -9,4 +9,3 @@ build:
 run:
 	docker run --rm --gpus '"device=0"' --net=host --env DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix -v ${PWD}/src:/home/ubuntu/ros2_ws/src  -v /dev/shm:/dev/shm -it ${IMAGE_NAME}
 
-	

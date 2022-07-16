@@ -1,0 +1,4 @@
+source;share/uamv0/local_setup.bash
+source;share/uamv0/local_setup.dsv
+source;share/uamv0/local_setup.sh
+source;share/uamv0/local_setup.zsh

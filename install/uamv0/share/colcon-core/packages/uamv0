@@ -1,1 +1,0 @@
-geometry_msgs:joint_state_publisher:rclcpp:robot_state_publisher:ros2launch:rosgraph_msgs:rviz:std_msgs:urdf:xacro

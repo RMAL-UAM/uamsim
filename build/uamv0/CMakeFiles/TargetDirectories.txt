@@ -1,9 +1,0 @@
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/install/strip.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/install/local.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/install.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/list_install_components.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/rebuild_cache.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/edit_cache.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/test.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/uamv0_uninstall.dir
-/home/willcmc/uamsim/build/uamv0/CMakeFiles/uninstall.dir

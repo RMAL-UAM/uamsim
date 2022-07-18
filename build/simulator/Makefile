@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rmal4/uamsim/src/simulator
+CMAKE_SOURCE_DIR = /home/willcmc/uamsim/src/simulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rmal4/uamsim/build/simulator
+CMAKE_BINARY_DIR = /home/willcmc/uamsim/build/simulator
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rmal4/uamsim/build/simulator/CMakeFiles /home/rmal4/uamsim/build/simulator/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/willcmc/uamsim/build/simulator/CMakeFiles /home/willcmc/uamsim/build/simulator/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rmal4/uamsim/build/simulator/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/willcmc/uamsim/build/simulator/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

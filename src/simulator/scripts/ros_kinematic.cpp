@@ -73,21 +73,18 @@ namespace gazebo
     public:
         void OnUpdate()
         {
-
-            this->model->GetJoint("prop1")->SetVelocity(0, 10);
-            this->model->GetJoint("prop2")->SetVelocity(0, 10);
-            this->model->GetJoint("prop3")->SetVelocity(0, 10);
-            this->model->GetJoint("prop4")->SetVelocity(0, 10);
-            this->model->GetJoint("inter")->SetVelocity(0, 0);
-
-            this->model->GetJoint("manip_base")->SetVelocity(0, 0);
-            this->model->GetJoint("end")->SetVelocity(0, 0);
+            // this->model->GetJoint("prop_shaft1")->SetVelocity(0, 10);
+            // this->model->GetJoint("prop_shaft2")->SetVelocity(0, 10);
+            // this->model->GetJoint("prop_shaft3")->SetVelocity(0, 10);
+            // this->model->GetJoint("prop_shaft4")->SetVelocity(0, 10);
+            // this->model->GetJoint("prop_shaft5")->SetVelocity(0, 10);
+            // this->model->GetJoint("prop_shaft6")->SetVelocity(0, 10);
 
             for(int i = 0; i<3; i++) current::linear_v[i] = 10*(current::position_desired[i] - current::position_now[i]);
 
-            RCLCPP_INFO(this->ros_node_->get_logger(), "Speed requested: %f, %f, %f", current::linear_v[0], current::linear_v[1], current::linear_v[2]);
-            RCLCPP_INFO(this->ros_node_->get_logger(), "Position requested: %f, %f, %f", current::position_desired[0], current::position_desired[1], current::position_desired[2]);
-            RCLCPP_INFO(this->ros_node_->get_logger(), "Current position: %f, %f, %f", current::position_now[0], current::position_now[1], current::position_now[2]);
+            // RCLCPP_INFO(this->ros_node_->get_logger(), "Speed requested: %f, %f, %f", current::linear_v[0], current::linear_v[1], current::linear_v[2]);
+            // RCLCPP_INFO(this->ros_node_->get_logger(), "Position requested: %f, %f, %f", current::position_desired[0], current::position_desired[1], current::position_desired[2]);
+            // RCLCPP_INFO(this->ros_node_->get_logger(), "Current position: %f, %f, %f", current::position_now[0], current::position_now[1], current::position_now[2]);
 
             current::position_now[0] = this->model->GetLink("base_link")->WorldInertialPose().Pos().X();
             current::position_now[1] = this->model->GetLink("base_link")->WorldInertialPose().Pos().Y();
@@ -95,8 +92,6 @@ namespace gazebo
 
             this->model->GetLink("base_link")->SetLinearVel(ignition::math::Vector3d(current::linear_v[0], current::linear_v[1], current::linear_v[2]));
             this->model->GetLink("base_link")->SetAngularVel(ignition::math::Vector3d(current::angular_v[0], current::angular_v[1], current::angular_v[2]));
-
-            // this->model->GetLink("base_link")->SetVelocity(0, 1.0);
 
             // BASE LINK
         }
@@ -114,6 +109,8 @@ namespace gazebo
             current::position_desired[2] = pose->pose.position.z;
 
             ignition::math::Quaterniond temp(pose->pose.orientation.w, pose->pose.orientation.x, pose->pose.orientation.y, pose->pose.orientation.z);
+
+            // RCLCPP_INFO(this->ros_node_->get_logger(), "Pose update.");
             
             current::orientation_desired[0] = temp.Euler()[0];
             current::orientation_desired[1] = temp.Euler()[1];
@@ -141,11 +138,6 @@ namespace gazebo
         //     RCLCPP_INFO(this->ros_node_->get_logger(), "Publishing: '%s'", message.data.c_str());
         //     publisher_->publish(message);
         // }
-
-        void topic_callback(const std_msgs::msg::String::SharedPtr msg) const
-        {
-            RCLCPP_INFO(this->ros_node_->get_logger(), "I heard: '%s'", msg->data.c_str());
-        }
 
         // Pointer to the model
     private:

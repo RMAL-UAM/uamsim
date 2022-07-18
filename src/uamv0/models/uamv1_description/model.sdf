@@ -1,0 +1,592 @@
+<sdf version='1.7'>
+  <model name='UAM'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.014992 -0.010615 0.216277 0 -0 0</pose>
+        <mass>2.048</mass>
+        <inertia>
+          <ixx>0.033031</ixx>
+          <ixy>-0.000621433</ixy>
+          <ixz>1.38397e-05</ixz>
+          <iyy>0.0311275</iyy>
+          <iyz>-6.23699e-06</iyz>
+          <izz>0.0600746</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.1
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='swivel_joint' type='revolute'>
+      <pose relative_to='base_link'>0.013983 -0.010152 0.276952 0 0 -1.37557</pose>
+      <parent>base_link</parent>
+      <child>swivel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-1</lower>
+          <upper>1</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='swivel'>
+      <pose relative_to='swivel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.000156 0.000689 0.020954 0 -0 0</pose>
+        <mass>0.103835</mass>
+        <inertia>
+          <ixx>5.5532e-05</ixx>
+          <ixy>-1.18329e-08</ixy>
+          <ixz>-9.33306e-09</ixz>
+          <iyy>5.58643e-05</iyy>
+          <iyz>2.93127e-07</iyz>
+          <izz>4.44196e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='swivel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/swivel.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.5
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='swivel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/swivel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_a' type='revolute'>
+      <pose relative_to='swivel'>0 0 0.0405 0 -0.274664 0</pose>
+      <parent>swivel</parent>
+      <child>link_a</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>0</effort>
+          <velocity>1</velocity>
+          <lower>0</lower>
+          <upper>1</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_a'>
+      <pose relative_to='joint_a'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.007625 0.000168 0.08639 0 -0 0</pose>
+        <mass>0.141697</mass>
+        <inertia>
+          <ixx>0.000315705</ixx>
+          <ixy>1.87392e-08</ixy>
+          <ixz>-4.49076e-05</ixz>
+          <iyy>0.000324848</iyy>
+          <iyz>-9.8765e-07</iyz>
+          <izz>5.23216e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_a_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/link_a.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.5
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='link_a_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/link_a.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint_b' type='revolute'>
+      <pose relative_to='link_a'>0.024 0 0.128 0 -0.1548 0</pose>
+      <parent>link_a</parent>
+      <child>link_b</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>0</effort>
+          <velocity>0</velocity>
+          <lower>0</lower>
+          <upper>1</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link_b'>
+      <pose relative_to='joint_b'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.077067 0.000243 0.000228 0 -0 0</pose>
+        <mass>0.12423</mass>
+        <inertia>
+          <ixx>2.97665e-05</ixx>
+          <ixy>-1.08302e-06</ixy>
+          <ixz>-6.49616e-07</ixz>
+          <iyy>0.000246824</iyy>
+          <iyz>6.85663e-09</iyz>
+          <izz>0.000257567</izz>
+        </inertia>
+      </inertial>
+      <collision name='link_b_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/link_b.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.1
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='link_b_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/link_b.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='end_joint' type='revolute'>
+      <pose relative_to='link_b'>0.124 0 0 0 0.5654 0</pose>
+      <parent>link_b</parent>
+      <child>end</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <effort>0</effort>
+          <velocity>0</velocity>
+          <lower>0</lower>
+          <upper>1</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='end'>
+      <pose relative_to='end_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.042793 1.8e-05 0.007003 0 -0 0</pose>
+        <mass>0.100339</mass>
+        <inertia>
+          <ixx>6.17699e-05</ixx>
+          <ixy>4.70152e-09</ixy>
+          <ixz>2.77437e-06</ixz>
+          <iyy>3.71863e-05</iyy>
+          <iyz>5.59993e-08</iyz>
+          <izz>5.68634e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='end_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/end.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.1
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='end_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/end.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper_l_slot' type='prismatic'>
+      <pose relative_to='end'>-0.1268 0.021681 0.210374 3.13621 -0 0</pose>
+      <parent>end</parent>
+      <child>gripper_l</child>
+      <axis>
+        <xyz>0 0.999996 0.002693</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_l'>
+      <pose relative_to='gripper_l_slot'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.228492 -0.024935 0.210512 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1.38524e-05</ixx>
+          <ixy>-4.83067e-07</ixy>
+          <ixz>1.76575e-09</ixz>
+          <iyy>4.63466e-05</iyy>
+          <iyz>-1.50255e-08</iyz>
+          <izz>4.08959e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_l_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/gripper_l.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <torsional>
+              <coefficient>
+                0.1
+              </coefficient>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='gripper_l_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/gripper_l.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper_r_slot' type='prismatic'>
+      <pose relative_to='end'>-0.1268 -0.021932 -0.210441 0 -0 0</pose>
+      <parent>end</parent>
+      <child>gripper_r</child>
+      <axis>
+        <xyz>0 0.999996 -0.002693</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_r'>
+      <pose relative_to='gripper_r_slot'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.228492 -0.023652 0.210464 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1.38524e-05</ixx>
+          <ixy>-4.83067e-07</ixy>
+          <ixz>1.76526e-09</ixz>
+          <iyy>4.63466e-05</iyy>
+          <iyz>-1.50256e-08</iyz>
+          <izz>4.08959e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_r_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/gripper_r.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_r_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://uamv1_description/meshes/gripper_r.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <!-- Camera -->
+    <joint name="camera_fix" type="fixed">
+      <axis xyz="0 1 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent>end</parent>
+      <child>camera_link</child>
+    </joint>
+    <link name="camera_link">
+      <sensor type="camera" name="camera1">
+        <update_rate>30.0</update_rate>
+        <camera name="head">
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>800</width>
+            <height>800</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>uam/camera1</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+          <ros>
+            <namespace>
+            /uam
+          </namespace>
+          </ros>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- IMU -->
+    <joint name="imu_fix" type="fixed">
+      <pose relative_to="base_link">
+        0 0 0 -0 0
+      </pose>
+      <parent>
+        base_link
+      </parent>
+      <child>
+        imu_link
+      </child>
+    </joint>
+    <link name="imu_link">
+      <gravity>
+      true
+    </gravity>
+      <pose relative_to="imu_fix">
+      0 0 0 0 -0 0
+    </pose>
+      <sensor name="twr_imu" type="imu">
+        <always_on>
+        true
+      </always_on>
+        <update_rate>
+        100
+      </update_rate>
+        <visualize>
+        true
+      </visualize>
+        <imu>
+          <orientation>
+            <x>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </z>
+          </orientation>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>
+                0.0
+              </mean>
+                <stddev>
+                0.0
+              </stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <plugin name="uamv0_robot_imu" filename="libgazebo_ros_imu_sensor.so">
+          <initial_orientation_as_reference>
+          false
+        </initial_orientation_as_reference>
+          <frame_name>
+          imu_link
+        </frame_name>
+          <ros>
+            <namespace>
+            /uam
+          </namespace>
+            <remapping>
+            ~/out:=imu
+          </remapping>
+          </ros>
+        </plugin>
+      </sensor>
+    </link>
+    <plugin name="ros_kinematic" filename="libros_kinematic.so" />
+  </model>
+</sdf>

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rmal4/uamsim/src/simulator
+CMAKE_SOURCE_DIR = /home/willcmc/uamsim/src/simulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rmal4/uamsim/build/simulator
+CMAKE_BINARY_DIR = /home/willcmc/uamsim/build/simulator
 
 # Utility rule file for uninstall.
 
@@ -67,6 +67,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/rmal4/uamsim/build/simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rmal4/uamsim/src/simulator /home/rmal4/uamsim/src/simulator /home/rmal4/uamsim/build/simulator /home/rmal4/uamsim/build/simulator /home/rmal4/uamsim/build/simulator/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/willcmc/uamsim/build/simulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/willcmc/uamsim/src/simulator /home/willcmc/uamsim/src/simulator /home/willcmc/uamsim/build/simulator /home/willcmc/uamsim/build/simulator /home/willcmc/uamsim/build/simulator/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 
